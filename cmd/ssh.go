@@ -15,7 +15,7 @@ var sshCmd = &cobra.Command{
   Run: func(cmd *cobra.Command, args []string) {
     vm_name := args[0]
     access_token := getToken()
-    url := fmt.Sprintf("http://localhost:4003/api/instance_ip?name=%s&access_token=%s", vm_name, access_token)
+    url := fmt.Sprintf("http://10.1.9.49:4001/api/instance_ip?name=%s&access_token=%s", vm_name, access_token)
 		resp, err := http.Get(url)
 		if err != nil {
 			panic(err)

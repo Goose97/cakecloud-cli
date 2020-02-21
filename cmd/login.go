@@ -35,7 +35,7 @@ var logInCmd = &cobra.Command{
 
     values := map[string]string{"username": username, "password": password}
     jsonValue, _ := json.Marshal(values)
-		resp, err := http.Post("http://localhost:4003/api/login", "application/json", bytes.NewBuffer(jsonValue))
+		resp, err := http.Post("http://10.1.9.49:4001/api/login", "application/json", bytes.NewBuffer(jsonValue))
 		
 		if err != nil {
 			fmt.Println(err)

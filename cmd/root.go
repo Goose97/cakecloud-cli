@@ -8,9 +8,9 @@ import (
 )
 
 func init() {
-  rootCmd.AddCommand(versionCmd)
-  rootCmd.AddCommand(logInCmd)
-  rootCmd.AddCommand(sshCmd)
+  RootCmd.AddCommand(versionCmd)
+  RootCmd.AddCommand(logInCmd)
+  RootCmd.AddCommand(sshCmd)
 }
 
 var versionCmd = &cobra.Command{
@@ -22,7 +22,7 @@ var versionCmd = &cobra.Command{
   },
 }
 
-var rootCmd = &cobra.Command{
+var RootCmd = &cobra.Command{
   Use:   "hugo",
   Short: "Hugo is a very fast static site generator",
   Long: `A Fast and Flexible Static Site Generator built with
@@ -35,7 +35,7 @@ var rootCmd = &cobra.Command{
 }
 
 func Execute() {
-  if err := rootCmd.Execute(); err != nil {
+  if err := RootCmd.Execute(); err != nil {
     fmt.Println(err)
     os.Exit(1)
   }

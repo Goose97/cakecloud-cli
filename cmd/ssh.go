@@ -8,6 +8,8 @@ import (
   "github.com/spf13/cobra"
 )
 
+var sshCommandTarget = []string{ "pod", "node", "service", "replicationcontroller" }
+
 var sshCmd = &cobra.Command{
   Use:   "ssh",
   Short: "SSH into VM using VM's name",
@@ -40,4 +42,5 @@ var sshCmd = &cobra.Command{
       fmt.Println(error_message)
     }
   },
+  ValidArgs: sshCommandTarget,
 }

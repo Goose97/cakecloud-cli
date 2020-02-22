@@ -11,6 +11,7 @@ func init() {
   RootCmd.AddCommand(versionCmd)
   RootCmd.AddCommand(logInCmd)
   RootCmd.AddCommand(sshCmd)
+  RootCmd.AddCommand(updateCmd)
 }
 
 var versionCmd = &cobra.Command{

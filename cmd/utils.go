@@ -42,8 +42,9 @@ func getToken() string {
 
 func readRespBody(resp *http.Response) map[string]interface{} {
   defer resp.Body.Close()
-	body, _ := ioutil.ReadAll(resp.Body)
+  body, _ := ioutil.ReadAll(resp.Body)
   var m map[string]interface{}
+  json.Unmarshal([]byte(body), &m)
   if err := json.Unmarshal(body, &m); err != nil {
     panic(err)
 	}
@@ -54,7 +55,7 @@ func readRespBody(resp *http.Response) map[string]interface{} {
 func generateAppleScript(remote_host string) string {
   return fmt.Sprintf(
     `tell application \"iTerm2\"
-      tell first session of current tab of current window
+      tell current session of current tab of current window
         write text \"ssh %s\"
       end tell
     end tell

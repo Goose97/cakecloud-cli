@@ -8,8 +8,6 @@ import (
   "github.com/spf13/cobra"
 )
 
-var sshCommandTarget = []string{ "pod", "node", "service", "replicationcontroller" }
-
 var sshCmd = &cobra.Command{
   Use:   "ssh",
   Short: "SSH into VM using VM's name",
@@ -18,7 +16,7 @@ var sshCmd = &cobra.Command{
     vm_name := args[0]
     access_token := getToken()
     url := fmt.Sprintf("http://10.1.9.49:4001/api/instance_ip?name=%s&access_token=%s", vm_name, access_token)
-		resp, err := http.Get(url)
+    resp, err := http.Get(url)
 		if err != nil {
 			panic(err)
 		}
@@ -42,5 +40,4 @@ var sshCmd = &cobra.Command{
       fmt.Println(error_message)
     }
   },
-  ValidArgs: sshCommandTarget,
 }

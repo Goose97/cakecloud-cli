@@ -30,7 +30,7 @@ var updateCmd = &cobra.Command{
 		if resp_body_map["success"].(bool) == true {
 			list_vm_names := resp_body_map["data"].(string)
 			list_vm_names_byte := []uint8(list_vm_names)
-			err = ioutil.WriteFile("/tmp/cakecloud_vm_list", list_vm_names_byte, 0644)
+			err = ioutil.WriteFile("~/.oh-my-zsh/plugins/cakecloud/list_vm", list_vm_names_byte, 0644)
 			if err != nil {
 				panic(err)
 			}

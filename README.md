@@ -17,3 +17,14 @@ cakecloud login
 ```
 cakecloud ssh $VM_NAME
 ```
+3.Autocomplete
+To enable autocomplete, follow instruction below:
+ - Open your ~/.zshrc file and add cakecloud as a plugins
+ Example:
+```
+plugins=(git) ---> plugins=(git cakecloud)
+```
+ - Run update to fetch list of instance name 
+```
+cakecloud update
+```

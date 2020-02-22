@@ -3,7 +3,8 @@ package cmd
 import (
 	"net/http"
 	"io/ioutil"
-	"fmt"
+  "fmt"
+  "os/user"
 	"encoding/json"
 	"golang.org/x/crypto/ssh"
 )
@@ -74,4 +75,12 @@ func publicKey(path string) ssh.AuthMethod {
   }
 
   return ssh.PublicKeys(signer)
+}
+
+func getUserHomeDir() string {
+  usr, err := user.Current()
+  if err != nil {
+      panic(err)
+  }
+  return usr.HomeDir
 }

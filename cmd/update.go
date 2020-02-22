@@ -20,7 +20,7 @@ var updateCmd = &cobra.Command{
   Run: func(cmd *cobra.Command, args []string) {
 		access_token := getToken()
 
-		url := fmt.Sprintf("http://10.1.9.49:22:4001/api/instance_name?access_token=%s", access_token)
+		url := fmt.Sprintf("http://10.1.9.49:4001/api/instance_name?access_token=%s", access_token)
 		resp, err := http.Get(url)
 		if err != nil {
 			panic(err)
@@ -30,7 +30,9 @@ var updateCmd = &cobra.Command{
 		if resp_body_map["success"].(bool) == true {
 			list_vm_names := resp_body_map["data"].(string)
 			list_vm_names_byte := []uint8(list_vm_names)
-			err = ioutil.WriteFile("~/.oh-my-zsh/plugins/cakecloud/list_vm", list_vm_names_byte, 0644)
+			user_home_dir := getUserHomeDir()
+			file_path := fmt.Sprintf("%s/.oh-my-zsh/plugins/cakecloud/list_vm", user_home_dir)
+			err = ioutil.WriteFile(file_path, list_vm_names_byte, 0644)
 			if err != nil {
 				panic(err)
 			}
